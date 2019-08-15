@@ -16,6 +16,9 @@ using Octobooks.Repository.Base;
 using Octobooks.Repository.Interfaces;
 using Octobooks.Services;
 using Octobooks.Services.Interfaces;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace Octobooks.API
 {
@@ -32,6 +35,32 @@ namespace Octobooks.API
         {
             DependencyInjection(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new Info
+                    {
+                        Title = "Openbook",
+                        Version = "v1",
+                        Description = "Openbook",
+                        Contact = new Contact
+                        {
+                            Name = "Only R - Only Research",
+                            Url = "https://github.com/onlyresearch"
+                        }
+                    });
+
+                var caminhoAplicacao =
+                    PlatformServices.Default.Application.ApplicationBasePath;
+                var nomeAplicacao =
+                    PlatformServices.Default.Application.ApplicationName;
+                var caminhoXmlDoc =
+                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+
+                c.IncludeXmlComments(caminhoXmlDoc);
+            });
+
+
         }
         public void DependencyInjection(IServiceCollection services)
         {
@@ -47,13 +76,16 @@ namespace Octobooks.API
             {
                 app.UseDeveloperExceptionPage();
             }
-           /* else
-            {
-                app.UseHsts();
-            }*/
-
-           // app.UseHttpsRedirection();
             app.UseMvc();
+            
+            
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json","Octobook");
+            });
+           
+
         }
     }
 }

@@ -64,8 +64,6 @@ namespace Octobooks.Repository.Base
             return Conn.GetAll<T>().ToList();
         }
 
-
-
         public T GetById(int id)
         {
             throw new NotImplementedException();
