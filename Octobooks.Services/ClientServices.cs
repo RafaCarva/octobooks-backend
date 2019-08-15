@@ -26,14 +26,16 @@ namespace Octobooks.Services
             return _clientRepository.GetAll();
         }
 
-        public List<Client> GetByBrand(string brand)
+        public Client GetById(int id)
         {
-            throw new NotImplementedException();
+            return  _clientRepository.GetById(id);
         }
 
         public Client Insert(Client client)
         {
-            throw new NotImplementedException();
+            return _clientRepository.Insert(client);
         }
+
+       
     }
 }

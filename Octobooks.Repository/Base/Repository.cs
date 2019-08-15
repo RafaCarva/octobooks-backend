@@ -9,7 +9,7 @@ using Dapper.Contrib.Extensions;
 using Octobooks.Domain.Base;
 using Octobooks.Repository.Interfaces;
 using Microsoft.Extensions.Configuration;
-
+using Microsoft.Extensions.Logging;
 
 namespace Octobooks.Repository.Base
 {
@@ -17,10 +17,12 @@ namespace Octobooks.Repository.Base
     {
 
         private readonly IConfiguration _config;
+        protected readonly ILogger<Repository<T>> _logger;
 
-        public Repository( IConfiguration config)
+        public Repository( IConfiguration config, ILogger<Repository<T>> logger)
         {
             _config = config;
+            _logger = logger;
         }
 
         private IDbConnection Conn => new SqlConnection(_config.GetConnectionString("DefaultConnection"));
@@ -64,15 +66,32 @@ namespace Octobooks.Repository.Base
             return Conn.GetAll<T>().ToList();
         }
 
-        public T GetById(int id)
+        public virtual T GetById(int id)
         {
-            throw new NotImplementedException();
+            return Conn.Get<T>(id);
         }
-        /*
-        public List<T> Query(string query, DynamicParameters parameters)
+        public virtual List<T> ExecuteQuery(string query, DynamicParameters parameters = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (parameters == null)
+                    return Conn.Query<T>(query).ToList();
+
+                return Conn.Query<T>(query, parameters).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+            finally
+            {
+                if ((Conn != null) && (Conn.State != ConnectionState.Closed))
+                {
+                    Conn.Close();
+                }
+            }
         }
-        */
+        public void Dispose() => Conn.Dispose();
     }
 }

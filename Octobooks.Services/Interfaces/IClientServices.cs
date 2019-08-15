@@ -10,6 +10,6 @@ namespace Octobooks.Services.Interfaces
         void Delete(Guid key);
         Client Insert(Client client);
         List<Client> GetAll();
-        List<Client> GetByBrand(string brand);
+        Client GetById(int id);
     }
 }

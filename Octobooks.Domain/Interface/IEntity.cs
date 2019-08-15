@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Octobooks.Domain.Interface
 {
-    interface IEntity
+    public interface IEntity
     {
-        int Id { get; set; }
+      
     }
 }

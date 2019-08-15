@@ -16,6 +16,6 @@ namespace Octobooks.Repository.Interfaces
         bool Remove(T obj);
         List<T> GetAll();
         T GetById(int id);
-      //  List<T> Query(string query, DynamicParameters parameters);
+        List<T> Query(string query, DynamicParameters parameters);
     }
 }

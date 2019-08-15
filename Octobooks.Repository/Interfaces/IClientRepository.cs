@@ -12,6 +12,6 @@ namespace Octobooks.Repository.Interfaces
         bool Remove(Client obj);
         List<Client> GetAll();
         Client GetById(int id);
-      //  List<Client> Query(string query, DynamicParameters parameters);
+        List<Client> Query(string query, DynamicParameters parameters);
     }
 }
