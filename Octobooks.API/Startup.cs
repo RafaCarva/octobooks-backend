@@ -37,6 +37,7 @@ namespace Octobooks.API
         {
             services.AddSingleton<IRepository<Client>, Repository<Client>>();
             services.AddTransient<IClientServices, ClientServices>();
+            services.AddTransient<IClientRepository, ClientRepository>();
 
         }
 
@@ -46,10 +47,10 @@ namespace Octobooks.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
+           /* else
             {
                 app.UseHsts();
-            }
+            }*/
 
            // app.UseHttpsRedirection();
             app.UseMvc();
