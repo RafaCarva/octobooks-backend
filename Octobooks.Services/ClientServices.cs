@@ -16,9 +16,9 @@ namespace Octobooks.Services
             _clientRepository = clientRepository;
         }
 
-        public void Delete(Guid key)
+        public void Delete(Client client)
         {
-            throw new NotImplementedException();
+            _clientRepository.Remove(client);
         }
 
         public List<Client> GetAll()

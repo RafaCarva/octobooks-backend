@@ -64,10 +64,12 @@ namespace Octobooks.API
         }
         public void DependencyInjection(IServiceCollection services)
         {
-            services.AddSingleton<IRepository<Client>, Repository<Client>>();
+            //services.AddSingleton<IRepository<Client>, Repository<Client>>();
             services.AddTransient<IClientServices, ClientServices>();
             services.AddTransient<IClientRepository, ClientRepository>();
 
+            services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddTransient<IBookServices, BookServices>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

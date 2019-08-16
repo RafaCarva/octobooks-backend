@@ -7,7 +7,7 @@ namespace Octobooks.Services.Interfaces
 {
     public interface IClientServices
     {
-        void Delete(Guid key);
+        void Delete(Client client);
         Client Insert(Client client);
         List<Client> GetAll();
         Client GetById(int id);
