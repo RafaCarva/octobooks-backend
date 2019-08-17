@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octobooks.Domain", "..\Octo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octobooks.Repository", "..\Octobooks.Repository\Octobooks.Repository.csproj", "{6102469C-65AB-49D0-AFEB-FF94684057E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octobooks.Services", "..\Octobooks.Services\Octobooks.Services.csproj", "{23DFEB86-1F94-4853-A4FA-56F2CB428C08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octobooks.Services", "..\Octobooks.Services\Octobooks.Services.csproj", "{23DFEB86-1F94-4853-A4FA-56F2CB428C08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octobooks.Business", "..\Octobooks.Business\Octobooks.Business.csproj", "{82EC9514-316E-4475-B2E5-6E73483F5D74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{23DFEB86-1F94-4853-A4FA-56F2CB428C08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23DFEB86-1F94-4853-A4FA-56F2CB428C08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23DFEB86-1F94-4853-A4FA-56F2CB428C08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82EC9514-316E-4475-B2E5-6E73483F5D74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82EC9514-316E-4475-B2E5-6E73483F5D74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82EC9514-316E-4475-B2E5-6E73483F5D74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82EC9514-316E-4475-B2E5-6E73483F5D74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

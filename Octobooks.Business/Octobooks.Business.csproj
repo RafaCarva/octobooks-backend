@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Octobooks.Business\Octobooks.Business.csproj" />
     <ProjectReference Include="..\Octobooks.Domain\Octobooks.Domain.csproj" />
     <ProjectReference Include="..\Octobooks.Repository\Octobooks.Repository.csproj" />
   </ItemGroup>

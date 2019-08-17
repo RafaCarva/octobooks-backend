@@ -1,4 +1,5 @@
-﻿using Octobooks.Domain.Models;
+﻿using Octobooks.Business.Interfaces;
+using Octobooks.Domain.Models;
 using Octobooks.Repository.Interfaces;
 using Octobooks.Services.Interfaces;
 using System;
@@ -9,31 +10,31 @@ namespace Octobooks.Services
 {
     public class ClientServices : IClientServices
     {
-        private readonly IClientRepository _clientRepository;
+        private readonly IClientBusiness _clientBusiness;
 
-        public ClientServices(IClientRepository clientRepository)
+        public ClientServices(IClientBusiness clientBusiness)
         {
-            _clientRepository = clientRepository;
+            _clientBusiness = clientBusiness;
         }
 
         public void Delete(Client client)
         {
-            _clientRepository.Remove(client);
+            _clientBusiness.Delete(client);
         }
 
         public List<Client> GetAll()
         {
-            return _clientRepository.GetAll();
+            return _clientBusiness.GetAll();
         }
 
         public Client GetById(int id)
         {
-            return  _clientRepository.GetById(id);
+            return _clientBusiness.GetById(id);
         }
 
         public Client Insert(Client client)
         {
-            return _clientRepository.Insert(client);
+            return _clientBusiness.Insert(client);
         }
 
        

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Octobooks.Domain.Models;
 using Octobooks.Repository;
+using Octobooks.Business;
 using Octobooks.Repository.Base;
 using Octobooks.Repository.Interfaces;
 using Octobooks.Services;
@@ -19,6 +20,7 @@ using Octobooks.Services.Interfaces;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using Octobooks.Business.Interfaces;
 
 namespace Octobooks.API
 {
@@ -64,12 +66,13 @@ namespace Octobooks.API
         }
         public void DependencyInjection(IServiceCollection services)
         {
-            //services.AddSingleton<IRepository<Client>, Repository<Client>>();
-            services.AddTransient<IClientServices, ClientServices>();
             services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IClientServices, ClientServices>();
+            services.AddTransient<IClientBusiness, ClientBusiness>();
 
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddTransient<IBookServices, BookServices>();
+            services.AddTransient<IBookBusiness, BookBusiness>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
