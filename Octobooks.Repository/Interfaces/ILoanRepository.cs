@@ -8,10 +8,10 @@ namespace Octobooks.Repository.Interfaces
 {
     public interface ILoanRepository : IRepository<Loan>
     {
-        Loan Insert(Loan obj);
-        bool Remove(Loan obj);
-        List<Loan> GetAll();
-        Loan GetById(int id);
-        List<Loan> Query(string query, DynamicParameters parameters);
+        new Loan Insert(Loan obj);
+        new bool Remove(Loan obj);
+        new List<Loan> GetAll();
+        new Loan GetById(int id);
+        new List<Loan> Query(string query, DynamicParameters parameters);
     }
 }

@@ -8,10 +8,10 @@ namespace Octobooks.Repository.Interfaces
 {
     public interface IBookRepository : IRepository<Book>
     {
-        Book Insert(Book obj);
-        bool Remove(Book obj);
-        List<Book> GetAll();
-        Book GetById(int id);
-        List<Book> Query(string query, DynamicParameters parameters);
+        new Book Insert(Book obj);
+        new bool Remove(Book obj);
+        new List<Book> GetAll();
+        new Book GetById(int id);
+        new List<Book> Query(string query, DynamicParameters parameters);
     }
 }

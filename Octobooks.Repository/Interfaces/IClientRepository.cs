@@ -8,10 +8,10 @@ namespace Octobooks.Repository.Interfaces
 {
     public interface IClientRepository : IRepository<Client>
     {
-        Client Insert(Client obj);
-        bool Remove(Client obj);
-        List<Client> GetAll();
-        Client GetById(int id);
-        List<Client> Query(string query, DynamicParameters parameters);
+        new Client Insert(Client obj);
+        new bool Remove(Client obj);
+        new List<Client> GetAll();
+        new Client GetById(int id);
+        new List<Client> Query(string query, DynamicParameters parameters);
     }
 }
