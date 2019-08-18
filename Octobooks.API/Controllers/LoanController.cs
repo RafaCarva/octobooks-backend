@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Octobooks.Services.Interfaces;
 using Octobooks.Domain.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Octobooks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class LoanController : Controller
     {
         private readonly ILoanServices _loanService;

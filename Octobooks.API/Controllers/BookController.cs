@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ namespace Octobooks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class BookController : Controller
     {
         private readonly IBookServices _bookServices;

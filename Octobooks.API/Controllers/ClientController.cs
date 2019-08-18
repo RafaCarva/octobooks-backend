@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Octobooks.Domain.Models;
 using Octobooks.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Cors;
 
 namespace Octobooks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class ClientController : Controller
     {
         private readonly IClientServices _clientService;

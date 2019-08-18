@@ -36,6 +36,17 @@ namespace Octobooks.API
         public void ConfigureServices(IServiceCollection services)
         {
             DependencyInjection(services);
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("*")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwaggerGen(c =>
             {
@@ -89,13 +100,10 @@ namespace Octobooks.API
             {
                 app.UseHsts();
             }
-            app.UseCors(c =>
-            {
-                c.AllowAnyHeader();
-                c.AllowAnyMethod();
-                c.AllowAnyOrigin();
-            });
+            app.UseCors();
+            app.UseHttpsRedirection();
             app.UseMvc();
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
