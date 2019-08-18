@@ -73,6 +73,10 @@ namespace Octobooks.API
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddTransient<IBookServices, BookServices>();
             services.AddTransient<IBookBusiness, BookBusiness>();
+
+            services.AddSingleton<ILoanRepository, LoanRepository>();
+            services.AddTransient<ILoanServices, LoanServices>();
+            services.AddTransient<ILoanBusiness, LoanBusiness>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

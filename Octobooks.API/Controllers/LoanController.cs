@@ -2,34 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Octobooks.Domain.Models;
-using Octobooks.Services.Interfaces;
 using Microsoft.Extensions.Logging;
+using Octobooks.Services.Interfaces;
+using Octobooks.Domain.Models;
 
 namespace Octobooks.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientController : Controller
+    public class LoanController : Controller
     {
-        private readonly IClientServices _clientService;
-        private readonly ILogger<ClientController> _logger;
+        private readonly ILoanServices _loanService;
+        private readonly ILogger<LoanController> _logger;
 
-        public ClientController(IClientServices clientServices, ILogger<ClientController> logger)
+        public LoanController(ILoanServices loanServices, ILogger<LoanController> logger)
         {
-            _clientService = clientServices;
+            _loanService = loanServices;
             _logger = logger;
         }
 
-        // GET api/client
+        // GET: api/Loan
         [HttpGet]
         public ActionResult<IEnumerable<Client>> GetAll()
         {
             try
             {
                 _logger.LogInformation("Received get request");
-                return Ok(_clientService.GetAll());
+                return Ok(_loanService.GetAll());
             }
             catch (Exception exception)
             {
@@ -38,24 +39,22 @@ namespace Octobooks.API.Controllers
             }
         }
 
-        // GET api/client/1
+        // GET: api/Loan/5
         [HttpGet("{id}")]
         public ActionResult<Client> GetById(int id)
         {
-            var client = _clientService.GetById(id);  
-            return Ok(client);
+            var loan = _loanService.GetById(id);  
+            return Ok(loan);
         }
 
-        // POST api/client
+        // POST: api/Loan
         [HttpPost]
-        public ActionResult<string> Post([FromBody] Client client)
+        public ActionResult<string> Post([FromBody] Loan loan)
         {
             try
             {
-                //if (!ModelState.IsValid) return BadRequest(client);
                 _logger.LogInformation("Received post request");
-                var clientEntity = _clientService.Insert(client);
-                //if (clientEntity.ValidationResult.Errors.Any()) return AddValidationErrors(clientEntity.ValidationResult.Errors);
+                var clientEntity = _loanService.Insert(loan);
 
                 return Ok("success");
             }
@@ -65,6 +64,18 @@ namespace Octobooks.API.Controllers
                 return new StatusCodeResult(500);
             }
         }
+        /*
+        // PUT: api/Loan/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
 
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+        */
     }
 }
