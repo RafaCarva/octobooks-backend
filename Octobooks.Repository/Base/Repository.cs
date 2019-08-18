@@ -38,7 +38,7 @@ namespace Octobooks.Repository.Base
             }
             catch (Exception ex)
             {
-               // _logger.LogError(ex, ex.Message);
+                _logger.LogError(ex, ex.Message);
                 throw;
             }
             finally
