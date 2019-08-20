@@ -61,7 +61,8 @@ namespace Octobooks.API
                             Name = "Only R - Only Research",
                             Url = "https://github.com/onlyresearch"
                         }
-                    });
+                    }
+                    );
 
                 var caminhoAplicacao =
                     PlatformServices.Default.Application.ApplicationBasePath;
